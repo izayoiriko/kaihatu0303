@@ -56,15 +56,16 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
+  font-style: italic;
   color: #fff;
-  text-transform: uppercase;
+  text-transform: default;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
 }
 
 #logo:hover {
-  color: #fff;
+  color: silver;
   text-decoration: none;
 }
 
@@ -75,6 +76,9 @@ p {
 li .header-list {
   color: #fff !important;
   font-weight: bold;
+}
+li .header-list:hover {
+  color: silver !important;
 }
 
 /* デバッグウインドウ */
