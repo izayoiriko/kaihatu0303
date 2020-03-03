@@ -68,6 +68,15 @@ p {
   text-decoration: none;
 }
 
+.navbar-default {
+  background-color: teal;
+}
+
+li .header-list {
+  color: #fff !important;
+  font-weight: bold;
+}
+
 /* デバッグウインドウ */
 
 .debug_dump {
