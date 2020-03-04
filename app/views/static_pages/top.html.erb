@@ -13,19 +13,21 @@
         
     <div class="col-md-4">
       <h1>ログイン</h1>
-      <form>
-        <label class="label-form" for="session_email">メールアドレス</label>
-        <input class="form-control" type="email" name="session[email]">
-        
-        <label class="label-form" for="session_password" name="session_password">パスワード</label>
-        <input class="form-control" type="password" name="session[password]">
-        
-        <label class="checkbox inline checkbox-login" for="remember-me">
-          <input id="remember-me" type="checkbox" value="1" name="session[remember-me]">
-          <span>ログイン情報を記憶する</span>
-        </label>
-        <!--未実装　今はログイン画面へ-->
-    <%= link_to "Log In", login_path, class: "btn btn-primary btn-block btn-form" %>
+      <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+
+      <%= f.label :email, class: "label-login" %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password, class: "label-login" %>
+      <%= f.password_field :password, class: 'form-control' %>
+      
+      <%= f.label :remember_me, class: "checkbox inline checkbox-login", for: "remember-me" do %>
+        <%= f.check_box :remember_me, id: "remember-me" %>
+        <span>ログイン情報を記憶する</span>
+      <% end %>
+
+      <%= f.submit "Log In", class: "btn btn-primary btn-block btn-login" %>
+    <% end %>
       </form>
     </div>
   </div>
