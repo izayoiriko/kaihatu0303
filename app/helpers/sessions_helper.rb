@@ -21,7 +21,7 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
-  
+  # 一時的セッションにいるユーザーを返す　　それ以外はcookiesに対応したユーザーを返す
   def current_user
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)

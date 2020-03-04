@@ -9,11 +9,12 @@
           <!--ドロップダウン部分-->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle header-list" data-toggle="dropdown" id="dropdown-title" >
-              <%= @user.name %> <b class="caret"></b>
+               <%= current_user.name %> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <li class="dropdown-header">ユーザー</li>
-              <li><%= link_to "Show", current_user %></li>
+                                    <!--, user_path(current_user)-->
+              <li><%= link_to "Show", current_user %></li> 
               <li><%= link_to "Settings", '#' %></li>
               <li class="dropdown-header">タスク</li>
               <li><%= link_to "User-Tasks",'#'%></li>
