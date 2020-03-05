@@ -17,7 +17,7 @@
               <li class="dropdown-header">ユーザー</li>
                                     <!--, user_path(current_user)-->
               <li><%= link_to "Show", current_user %></li> 
-              <li><%= link_to "Settings", '#' %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user)%></li>
               <li class="dropdown-header">タスク</li>
               <li><%= link_to "User-Tasks",'#'%></li>
               <li class="divider"></li>
