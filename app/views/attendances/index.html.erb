@@ -1,3 +1,19 @@
 <% provide(:title, current_user.name)%>
 　　　　　<!--あとでcurrent_username↑確認する-->
 <h1><%= current_user.name %>のタスク一覧</h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= link_to "TaskNewCriate", '#', class:"btn btn-lg btn-primary pull-right"%>
+    <table class="table table-hover" id="table-tasks">
+      <thead>
+        <tr>
+          <th>worked</th>
+          <th>create</th>
+          <th></th>
+        </tr>
+      </thead>
+      
+    </table>
+  </div>
+</div>

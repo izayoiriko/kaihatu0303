@@ -108,6 +108,12 @@ li .header-list:hover {
   text-align: center;
   }
 }
+
+// タスク一覧
+
+#table-tasks th {
+  vertical-align: middle;
+}
 /* デバッグウインドウ */
 
 .debug_dump {
