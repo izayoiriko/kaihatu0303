@@ -13,6 +13,13 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.name, user %></td>
+        <td>
+<!--ユーザー削除機能8-5-2-->
+          <%= link_to "削除", user, method: :delete,
+              data: { confirm: "削除してよろしいですか？"},
+              class: "btn btn-danger" %>
+              
+        </td>
       </tr>
     <% end %>
   </table>
