@@ -2,14 +2,14 @@ class TasksController < ApplicationController
 before_action :set_user
   
   def index
-    @task = @user.tasks.all
+    @task = @user.tasks
   end
   
   def show
   end
   
   def new
-    @task = @user.tasks.new(task_params)
+    @task = Task.new
   end
   
   def create
@@ -22,6 +22,9 @@ before_action :set_user
     end
   end
   
+  def edit
+  end
+  
   
   private
   
@@ -30,6 +33,6 @@ before_action :set_user
     end
     
     def task_params
-      params.require(:task).permit(:title, :note, :user_id)
+      params.require(:task).permit(:worked_name, :details)
     end
 end
