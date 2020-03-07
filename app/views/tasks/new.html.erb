@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <%= form_with(model: @task, url:user_tasks_path(@user), local: true) do |f| %>
-        <%= render "shared/error_messages", obj: @task%>
+        <%= render "shared/error_messages", obj: @task %>
       
         <%= f.label :"名称", class: "label-form" %>
         <%= f.text_field :work, class: "form-control" %>
