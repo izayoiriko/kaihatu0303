@@ -19,11 +19,11 @@ end
 puts "UserCreate"
 
 
-@users = User.order(:created_at).task(3)
+ @users = User.order(:created_at).take(3)
 
-50.times do |w|
-  work = Faker::Name.name(2)
-  details= Faker::Lorem.sentence(5)
+50.times do |n|
+  work = Faker::Lorem.sentence(3)
+  details= Faker::Lorem.sentence(6)
   @users.each { |user| user.tasks.create!(work: work, details: details)}
 end
 
