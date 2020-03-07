@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 before_action :set_user
   
   def index
-    @task = @user.tasks
+    @task = @user.tasks.all
   end
   
   def show
@@ -13,7 +13,7 @@ before_action :set_user
   end
   
   def create
-    @task = @user.tasks.create(tasks_params)
+    @task = Task.new(task_params)
     if @task.save
       flash[:success] = "タスク新規作成しました。"
       redirect_to user_tasks_url @user
@@ -33,6 +33,6 @@ before_action :set_user
     end
     
     def task_params
-      params.require(:task).permit(:worked_name, :details)
+      params.require(:task).permit(:work, :details, :user_id)
     end
 end

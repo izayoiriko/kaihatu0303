@@ -4,16 +4,22 @@
 
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-    <%= link_to "TaskNewCriate", '#', class:"btn btn-lg btn-primary pull-right"%>
+    <%= link_to "タスク新規作成", new_user_task_path(current_user), class:"btn btn-lg btn-primary pull-right"%>
     <table class="table table-hover" id="table-tasks">
       <thead>
         <tr>
-          <th>work</th>
-          <th>create</th>
+          <th>名称</th>
+          <th>作成日</th>
           <th></th>
         </tr>
       </thead>
-      
+      <tbody>
+        <% @task.each do |task| %>
+          <tr>
+            <td><%= task.work %></td>
+            <td><%= task.created_at %></td>
+          </tr>
+        <% end %>
       <tr>
         <td>
           <% link_to "編集", '#', method: :edit, class: "btn btn-success" %>
@@ -22,6 +28,7 @@
         </td>
       </tr>
       
+      </tbody>
     </table>
   </div>
 </div>
