@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :user
   
-  validates :work, presence: true, length: { maximum: 20 }
-  validates :details, presence: true, length: { maximum: 100 }
+  validates :work, presence: true, length: { in: 2..10 }, allow_blank: true
+  validates :details, presence: true, length: { in: 2..100 }, allow_blank: true
   
 end
