@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 before_action :set_user
   
   def index
-    @task = @user.tasks.all
+    @task = @user.tasks
   end
   
   def show
