@@ -1,6 +1,6 @@
 # coding: utf-8
 
-User.create!( name: "Sample User",
+User.create!( name: "管理者",
               email: "sample@email.com",
               password: "password",
               password_confirmation: "password",
@@ -19,12 +19,15 @@ end
 puts "UserCreate"
 
 
- @users = User.order(:created_at).take(3)
+admin_user = User.first
+guest_user = User.find(2)
 
 50.times do |n|
-  work = Faker::Lorem.sentence(3)
-  details= Faker::Lorem.sentence(6)
-  @users.each { |user| user.tasks.create!(work: work, details: details)}
+  task_name = "タスク#{n + 1}"
+  description = "タスク詳細#{n + 1}"
+  admin_user.tasks.create!(work: task_name, details: description)
+  guest_user.tasks.create!(work: task_name, details: description)
+  
 end
 
 puts "TaskCreate"
