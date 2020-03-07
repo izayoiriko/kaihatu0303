@@ -13,7 +13,7 @@ before_action :set_user
   end
   
   def create
-    @task = Task.new(task_params)
+    @task = @user.tasks.build(task_params)
     if @task.save
       flash[:success] = "タスク新規作成しました。"
       redirect_to user_tasks_url @user
