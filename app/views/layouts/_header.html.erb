@@ -7,7 +7,7 @@
         <% if logged_in? %>
         <!--管理者だけが見れるようにするelself?-->
           <li><%= link_to "利用者一覧", users_path, class: "header-list" %></li>
-          <li><%= link_to "タスク作成", new_user_task_path(@task_params), class: "header-list" %></li>
+          <li><%= link_to "タスク作成", new_user_task_path(current_user), class: "header-list" %></li>
           <!--ドロップダウン部分-->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle header-list" data-toggle="dropdown" id="dropdown-title" >
