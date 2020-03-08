@@ -16,7 +16,7 @@
       <tbody>
         <% @task.each do |task| %>
           <tr>
-            <td><%= link_to task.work, '#' %></td>
+            <td><%= link_to task.work, user_task_path(@user, task) %></td>
             <td><%= l task.created_at, format: :long %></td>
             <td><%= link_to "編集", '#', class: "btn btn-success" %></td>
             <td><%= link_to "削除", '#', class: "btn btn-danger" %></td>

@@ -6,7 +6,7 @@ before_action :set_user
   end
   
   def show
-    @task = @user.task
+    
     
   end
   
