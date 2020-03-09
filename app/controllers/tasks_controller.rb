@@ -39,6 +39,7 @@ before_action :set_user
   end
   
   def destroy
+    @task = Task.find(params[:id])
     @task.destroy
     flash[:success] = "#{@task.work}のデータを削除しました。"
     redirect_to user_tasks_url
