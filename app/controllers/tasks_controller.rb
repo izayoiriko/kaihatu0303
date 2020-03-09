@@ -8,6 +8,7 @@ before_action :set_user
   def show
     
     
+    
   end
   
   def new
@@ -25,8 +26,18 @@ before_action :set_user
   end
   
   def edit
+    
   end
   
+  def update
+    
+    if @user.update_attributes(task_params)
+      flash[:success] = "タスクを更新しました。"
+      redirect_to user_task_path(@user, task)
+    else
+      render :edit
+    end
+  end
   
   private
   
