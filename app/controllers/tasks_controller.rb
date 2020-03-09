@@ -38,13 +38,28 @@ before_action :set_user
     end
   end
   
+  def destroy
+    @task.destroy
+    flash[:success] = "#{@task.work}のデータを削除しました。"
+    redirect_to user_tasks_url
+  end
+  
   private
   
+    def task_params
+      params.require(:task).permit(:work, :details, :user_id)
+    end
+    
+    # beforeフィルター
+    
     def set_user
       @user = User.find(params[:user_id])
     end
     
-    def task_params
-      params.require(:task).permit(:work, :details, :user_id)
+    def logged_in_user
+    end
+    
+    def current_user
+      redirect_to(root_url) unless current_user?(@user)
     end
 end

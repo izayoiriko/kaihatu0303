@@ -8,8 +8,8 @@
     <table class="table table-hover" id="table-tasks">
       <thead>
         <tr>
-          <th><%= Task.human_attribute_name :work%></th>
-          <th>作成日</th>
+          <th><%= Task.human_attribute_name :work %></th>
+          <th><%= Task.human_attribute_name :details %></th>
           <th></th>
         </tr>
       </thead>
@@ -18,8 +18,12 @@
           <tr>
             <td><%= link_to task.work, user_task_path(@user, task) %></td>
             <td><%= l task.created_at, format: :long %></td>
-            <td><%= link_to "編集", edit_user_task_path(@user, task), class: "btn btn-success" %></td>
-            <td><%= link_to "削除", '#', class: "btn btn-danger" %></td>
+            <td><%= link_to "編集", edit_user_task_path(@user, task), 
+                    class: "btn btn-success" %></td>
+                    <!--本人と管理者のみ-->
+            <td><%= link_to "削除", user_task_path, method: :delete,
+                    data: { confirm: "削除してよろしいですか？" }
+                    class: "btn btn-danger" %></td>
           </tr>
         <% end %>
       
