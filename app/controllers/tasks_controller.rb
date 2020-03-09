@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 before_action :set_user
-  
+
   def index
     @task = @user.tasks.order(created_at: :desc)
   end
@@ -57,10 +57,30 @@ before_action :set_user
       @user = User.find(params[:user_id])
     end
     
+    # ログイン済みかどうか
     def logged_in_user
+      unless logged_in?
+      store_location
+      flash[:danger] = "ログインしてください。"
+      resirect_to login_url
+      end
     end
+
     
     def current_user
       redirect_to(root_url) unless current_user?(@user)
+    end
+    
+    def admin_user
+      redirect_to root_url unless current_user.admin?
+    end
+    
+    # 管理権限者、または現在ログインしているユーザーを許可します。
+    def admin_or_current_user
+      @user = User.find(parsms[:user_id]) if @user.blank?
+      unless current_user?(@user) || current_user.admin?
+        flash[:danger] = "編集権限がありません。"
+        resirect_to(root_url)
+      end
     end
 end
