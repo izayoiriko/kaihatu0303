@@ -6,8 +6,7 @@ before_action :set_user
   end
   
   def show
-    
-    
+    @task = Task.find(params[:id])
     
   end
   
