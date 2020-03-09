@@ -29,13 +29,13 @@ before_action :set_user
   end
   
   def update
-    # @task = Task.find(params[:id])
-    # if @user.update_attributes(task_params)
+    @task = Task.find(params[:id])
+    if @task.update_attributes(task_params)
       flash[:success] = "タスクを更新しました。"
       redirect_to user_task_url
-    # else
-    #   render :edit
-    # end
+    else
+      render :edit
+    end
   end
   
   private
