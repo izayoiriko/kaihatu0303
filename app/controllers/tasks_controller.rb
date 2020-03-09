@@ -25,7 +25,7 @@ before_action :set_user
   end
   
   def edit
-    
+    @task = Task.find(params[:id])
   end
   
   def update
