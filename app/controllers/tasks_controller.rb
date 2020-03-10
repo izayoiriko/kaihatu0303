@@ -1,12 +1,13 @@
 class TasksController < ApplicationController
 before_action :set_user
+before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
     @task = @user.tasks.order(created_at: :desc)
   end
   
   def show
-    @task = Task.find(params[:id])
+    #
     
   end
   
@@ -25,11 +26,11 @@ before_action :set_user
   end
   
   def edit
-    @task = Task.find(params[:id])
+    #
   end
   
   def update
-    @task = Task.find(params[:id])
+    #
     if @task.update_attributes(task_params)
       flash[:success] = "タスクを更新しました。"
       redirect_to user_task_url
@@ -39,7 +40,7 @@ before_action :set_user
   end
   
   def destroy
-    @task = Task.find(params[:id])
+    #
     @task.destroy
     flash[:success] = "#{@task.work}のデータを削除しました。"
     redirect_to user_tasks_url
