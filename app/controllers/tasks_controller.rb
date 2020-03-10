@@ -87,7 +87,7 @@ before_action :correct_user
     def admin_or_current_user
       @user = User.find(parsms[:user_id]) if @user.blank?
       unless current_user?(@user) || current_user.admin?
-        flash[:danger] = "編集権限がありません。"
+        flash[:danger] = "編集権限がありませんよ。"
         
         redirect_to user_tasks_url(current_user)
       end
