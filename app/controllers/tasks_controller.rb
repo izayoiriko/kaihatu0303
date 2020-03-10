@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
 before_action :set_user
 before_action :set_task, only: [:show, :edit, :update, :destroy]
+before_action :logged_in_user
+before_action :correnct_user
 
   def index
     @task = @user.tasks.order(created_at: :desc)
@@ -68,7 +70,7 @@ before_action :set_task, only: [:show, :edit, :update, :destroy]
     end
 
     
-    def current_user
+    def correct_user
       redirect_to(root_url) unless current_user?(@user)
     end
     
