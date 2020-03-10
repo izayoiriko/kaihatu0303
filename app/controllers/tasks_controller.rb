@@ -60,6 +60,10 @@ before_action :correct_user
       @user = User.find(params[:user_id])
     end
     
+    def set_task
+      @task = Task.find(params[:id])
+    end
+    
     # ログイン済みかどうか
     def logged_in_user
       unless logged_in?
