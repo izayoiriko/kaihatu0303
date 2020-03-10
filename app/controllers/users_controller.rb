@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
-  before_action :admin_user, only: :destroy
+  before_action :admin_user, only: [:destroy, :index]
   
   def index
     @users = User.paginate(page: params[:page], per_page:20)
@@ -13,6 +13,10 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    if logged_in?
+      flash[:success] = "すでにログインしています"
+      redirect_to user_url (current_user)
+    end
   end
   
   def create
@@ -41,7 +45,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:success] = "#{@user.name}のデータを削除しました。"
-    redirect_to users_url
+    redirect_to user_url
   end
   
   
@@ -64,6 +68,7 @@ class UsersController < ApplicationController
         store_location
         flash[:danger] = "ログインしてください。"
         redirect_to login_url
+      else
       end
     end
     
